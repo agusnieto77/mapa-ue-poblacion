@@ -13,22 +13,43 @@ Mapa interactivo que visualiza la evolución demográfica de los países de la U
 
 ## Uso
 
-Abrí `index.html` en cualquier navegador, o visitá la versión publicada:
+La aplicación carga los datos con `fetch`, por lo que debe ejecutarse desde un servidor HTTP. Podés usar cualquier servidor estático o visitar la versión publicada:
 
 **https://agusnieto77.github.io/mapa-ue-poblacion/**
 
-- Mové el slider para cambiar de año
-- Click en un país para ver detalles
-- Botón play para animar la evolución temporal
-- Flechas izquierda/derecha o barra espaciadora como atajos
+Para desarrollo local, desde la raíz del proyecto:
+
+```bash
+python -m http.server 3000
+```
+
+Luego abrí `http://127.0.0.1:3000`.
+
+- Mové el slider para cambiar de año.
+- Hacé click en un país para ver el panel, el popup y el gráfico.
+- Usá play/pausa para recorrer los años automáticamente.
+- Con el mapa enfocado, usá las flechas izquierda/derecha para navegar los años.
 
 ## Tecnologías
 
 - [Leaflet](https://leafletjs.com/) - mapas interactivos
 - [Chart.js](https://chartjs.org/) - gráficos
 - [CARTO](https://carto.com/) - tiles de mapa oscuro
-- GeoJSON embebido (sin dependencia de CDNs para los datos de países)
+- Archivos GeoJSON y JSON locales para los datos de países y población
 
 ## Fuente de datos
 
 Eurostat - Population projections. Datos de población por país para los años 2015, 2020, 2030, 2040, 2050, 2060, 2070 y 2080.
+
+## Estructura
+
+```text
+.
+├── index.html                 # Estructura, estilos y dependencias CDN
+├── app.js                     # Estado, interacciones y renderizado Leaflet
+├── data/
+│   ├── eu-countries.json      # Geometrías de países
+│   └── population.json        # Población y superficie por país
+├── README.md
+└── AGENTS.md
+```
